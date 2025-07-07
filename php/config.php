@@ -75,8 +75,30 @@ function getClientIP() {
 }
 
 // Configuration settings
-define('SITE_NAME', 'Birthday Website');
-define('SITE_EMAIL', 'jacob.h.wolf@gmail.com');
-define('FORUM_POSTS_PER_PAGE', 10);
-define('REQUIRE_FORUM_APPROVAL', false); // Set to true to require admin approval for forum posts
+define('SITE_NAME', $_ENV['SITE_NAME'] ?? 'Birthday Website');
+define('SITE_EMAIL', $_ENV['SITE_EMAIL'] ?? 'jacob.h.wolf@gmail.com');
+define('SITE_URL', $_ENV['SITE_URL'] ?? 'https://localhost');
+define('FORUM_POSTS_PER_PAGE', $_ENV['FORUM_POSTS_PER_PAGE'] ?? 10);
+define('REQUIRE_FORUM_APPROVAL', $_ENV['REQUIRE_FORUM_APPROVAL'] === 'true');
+define('MAX_UPLOAD_SIZE', $_ENV['MAX_UPLOAD_SIZE'] ?? 5242880); // 5MB default
+
+// Production error settings
+if (isset($_ENV['PHP_ERROR_REPORTING'])) {
+    error_reporting($_ENV['PHP_ERROR_REPORTING']);
+}
+
+if (isset($_ENV['PHP_DISPLAY_ERRORS'])) {
+    ini_set('display_errors', $_ENV['PHP_DISPLAY_ERRORS']);
+}
+
+// Production security settings
+if (!isset($_ENV['DEBUG']) || $_ENV['DEBUG'] !== 'true') {
+    // Hide PHP version
+    header_remove('X-Powered-By');
+    
+    // Set secure session settings
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.cookie_secure', isset($_SERVER['HTTPS']));
+    ini_set('session.use_strict_mode', 1);
+}
 ?>
