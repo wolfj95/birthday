@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Photo Submission Status</title>
     <link rel="stylesheet" href="../css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <meta http-equiv="refresh" content="5;url=../gallery.html">
+    <meta http-equiv="refresh" content="30;url=../gallery.html">
 </head>
 <body>
     <div class="container">
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="center">
-            <p><strong>You'll be redirected back to the gallery in 5 seconds...</strong></p>
+            <p><strong>You'll be redirected back to the gallery in 30 seconds...</strong></p>
             <p><a href="../gallery.html">← Go back to Gallery</a></p>
             <p><a href="../index.html">← Return to Homepage</a></p>
         </div>

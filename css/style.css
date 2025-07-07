@@ -196,10 +196,20 @@ input[type="submit"]:active, input[type="button"]:active {
 }
 
 .blink {
-    animation: blink 4s linear infinite;
+    animation: blink 2s infinite;
 }
 
 @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fade {
+    animation: fade 4s linear infinite;
+}
+
+@keyframes fade {
     0% { opacity: 1; }
     50% { opacity: 0; }
     100% { opacity: 1; }

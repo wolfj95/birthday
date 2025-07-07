@@ -45,7 +45,7 @@ function initCountdown() {
     setInterval(updateCountdown, 1000);
     
     // Add blinking effect every 500ms (authentic 90s style!)
-    setInterval(addBlinkingEffect, 500);
+    setInterval(addBlinkingEffect, 1000);
     
     // Add some 90s-style status bar messages
     if (window.status !== undefined) {

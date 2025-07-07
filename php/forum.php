@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Forum Message Posted</title>
     <link rel="stylesheet" href="../css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <meta http-equiv="refresh" content="5;url=../forum.html">
+    <meta http-equiv="refresh" content="30;url=../forum.html">
 </head>
 <body>
     <div class="container">
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="center">
-            <p><strong>You'll be redirected back to the forum in 5 seconds...</strong></p>
+            <p><strong>You'll be redirected back to the forum in 30 seconds...</strong></p>
             <p><a href="../forum.html">← Go back to Forum</a></p>
             <p><a href="../index.html">← Return to Homepage</a></p>
         </div>
