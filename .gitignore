@@ -4,6 +4,9 @@
 ### Data ###
 /data/*.json
 
+### Secrets ###
+.env
+
 ### macOS ###
 # General
 .DS_Store

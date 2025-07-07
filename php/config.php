@@ -3,15 +3,30 @@
 // Update these values to match your MySQL setup
 
 // Database connection settings
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'birthday_website');
-define('DB_USER', 'root');  // Change to your MySQL username
-define('DB_PASS', '');      // Change to your MySQL password
 define('DB_CHARSET', 'utf8mb4');
+
+// Load environment variables from .env file
+function loadEnv($path) {
+    if (!file_exists($path)) {
+        return;
+    }
+    
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos($line, '=') !== false && strpos($line, '#') !== 0) {
+            list($key, $value) = explode('=', $line, 2);
+            $_ENV[trim($key)] = trim($value);
+        }
+    }
+}
+
+// Load the .env file
+loadEnv(__DIR__ . '/.env');
+
 
 // Database connection function
 function getDatabaseConnection() {
-    $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+    $dsn = "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] . ";charset=" . DB_CHARSET;
     
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -20,7 +35,7 @@ function getDatabaseConnection() {
     ];
     
     try {
-        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+        $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASS'], $options);
         return $pdo;
     } catch (PDOException $e) {
         // Log error and show user-friendly message
