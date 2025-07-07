@@ -196,7 +196,7 @@ input[type="submit"]:active, input[type="button"]:active {
 }
 
 .blink {
-    animation: blink 2s infinite;
+    /* animation: blink 2s infinite; */
 }
 
 @keyframes blink {

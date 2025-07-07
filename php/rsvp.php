@@ -2,58 +2,67 @@
 // RSVP Form Handler
 header('Content-Type: text/html; charset=utf-8');
 
-// Simple data storage (in a real application, use a database)
-$data_file = '../data/rsvps.json';
-
-// Create data directory if it doesn't exist
-if (!is_dir('../data')) {
-    mkdir('../data', 0755, true);
-}
-
-// Initialize data file if it doesn't exist
-if (!file_exists($data_file)) {
-    file_put_contents($data_file, json_encode([]));
-}
+// Include database configuration
+require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize and validate input
-    $name = htmlspecialchars(trim($_POST['name'] ?? ''));
-    $email = htmlspecialchars(trim($_POST['email'] ?? ''));
-    $phone = htmlspecialchars(trim($_POST['phone'] ?? ''));
-    $attending = htmlspecialchars(trim($_POST['attending'] ?? ''));
+    $name = sanitizeInput($_POST['name'] ?? '');
+    $email = sanitizeInput($_POST['email'] ?? '');
+    $phone = sanitizeInput($_POST['phone'] ?? '');
+    $attending = sanitizeInput($_POST['attending'] ?? '');
     $guests = intval($_POST['guests'] ?? 0);
     $dietary = isset($_POST['dietary']) ? $_POST['dietary'] : [];
-    $message = htmlspecialchars(trim($_POST['message'] ?? ''));
+    $message = sanitizeInput($_POST['message'] ?? '');
     
     // Validate required fields
     if (empty($name) || empty($email) || empty($attending)) {
         $error = "Please fill in all required fields.";
+    } elseif (!isValidEmail($email)) {
+        $error = "Please enter a valid email address.";
+    } elseif (!in_array($attending, ['yes', 'no'])) {
+        $error = "Please select whether you will attend or not.";
     } else {
-        // Create RSVP entry
-        $rsvp = [
-            'id' => uniqid(),
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'attending' => $attending,
-            'guests' => $guests,
-            'dietary' => $dietary,
-            'message' => $message,
-            'timestamp' => date('Y-m-d H:i:s'),
-            'ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown'
-        ];
-        
-        // Load existing RSVPs
-        $rsvps = json_decode(file_get_contents($data_file), true);
-        
-        // Add new RSVP
-        $rsvps[] = $rsvp;
-        
-        // Save to file
-        if (file_put_contents($data_file, json_encode($rsvps, JSON_PRETTY_PRINT))) {
-            $success = true;
-        } else {
-            $error = "Sorry, there was an error saving your RSVP. Please try again.";
+        try {
+            // Get database connection
+            $pdo = getDatabaseConnection();
+            
+            // Check if email already exists
+            $checkStmt = $pdo->prepare("SELECT id FROM rsvps WHERE email = ?");
+            $checkStmt->execute([$email]);
+            
+            if ($checkStmt->rowCount() > 0) {
+                $error = "An RSVP with this email address already exists. Please contact us if you need to update your RSVP.";
+            } else {
+                // Convert dietary array to JSON string
+                $dietaryJson = !empty($dietary) ? json_encode($dietary) : null;
+                
+                // Insert RSVP into database
+                $sql = "INSERT INTO rsvps (name, email, phone, attending, guests, dietary, message, ip_address) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                
+                $stmt = $pdo->prepare($sql);
+                $result = $stmt->execute([
+                    $name,
+                    $email,
+                    $phone,
+                    $attending,
+                    $guests,
+                    $dietaryJson,
+                    $message,
+                    getClientIP()
+                ]);
+                
+                if ($result) {
+                    $success = true;
+                    $rsvp_id = $pdo->lastInsertId();
+                } else {
+                    $error = "Sorry, there was an error saving your RSVP. Please try again.";
+                }
+            }
+        } catch (PDOException $e) {
+            error_log("RSVP Database Error: " . $e->getMessage());
+            $error = "Sorry, we're experiencing technical difficulties. Please try again later.";
         }
     }
 }
@@ -84,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p>We've noted that you're bringing <?php echo $guests; ?> guest(s).</p>
                     <?php endif; ?>
                     <?php if (!empty($dietary)): ?>
-                        <p>We've noted your dietary preferences: <?php echo implode(', ', $dietary); ?></p>
+                        <p>We've noted your dietary preferences: <?php echo implode(', ', array_map('htmlspecialchars', $dietary)); ?></p>
                     <?php endif; ?>
                 <?php else: ?>
                     <p>😢 <strong>Sorry you can't make it!</strong> We'll miss you!</p>

@@ -2,55 +2,57 @@
 // Forum Message Handler
 header('Content-Type: text/html; charset=utf-8');
 
-// Simple data storage (in a real application, use a database)
-$data_file = '../data/forum_messages.json';
-
-// Create data directory if it doesn't exist
-if (!is_dir('../data')) {
-    mkdir('../data', 0755, true);
-}
-
-// Initialize data file if it doesn't exist
-if (!file_exists($data_file)) {
-    file_put_contents($data_file, json_encode([]));
-}
+// Include database configuration
+require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize and validate input
-    $author = htmlspecialchars(trim($_POST['author'] ?? ''));
-    $email = htmlspecialchars(trim($_POST['email'] ?? ''));
-    $website = htmlspecialchars(trim($_POST['website'] ?? ''));
-    $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
-    $message = htmlspecialchars(trim($_POST['message'] ?? ''));
+    $author = sanitizeInput($_POST['author'] ?? '');
+    $email = sanitizeInput($_POST['email'] ?? '');
+    $website = sanitizeInput($_POST['website'] ?? '');
+    $subject = sanitizeInput($_POST['subject'] ?? '');
+    $message = sanitizeInput($_POST['message'] ?? '');
     
     // Validate required fields
     if (empty($author) || empty($subject) || empty($message)) {
         $error = "Please fill in all required fields.";
+    } elseif (strlen($message) < 10) {
+        $error = "Your message must be at least 10 characters long.";
+    } elseif (strlen($message) > 1000) {
+        $error = "Your message must be less than 1000 characters long.";
+    } elseif (!empty($email) && !isValidEmail($email)) {
+        $error = "Please enter a valid email address.";
+    } elseif (!empty($website) && !filter_var($website, FILTER_VALIDATE_URL)) {
+        $error = "Please enter a valid website URL.";
     } else {
-        // Create forum message entry
-        $forum_message = [
-            'id' => uniqid(),
-            'author' => $author,
-            'email' => $email,
-            'website' => $website,
-            'subject' => $subject,
-            'message' => $message,
-            'timestamp' => date('Y-m-d H:i:s'),
-            'ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-            'approved' => false // Messages need approval in a real system
-        ];
-        
-        // Load existing messages
-        $messages = json_decode(file_get_contents($data_file), true);
-        
-        // Add new message
-        $messages[] = $forum_message;
-        
-        // Save to file
-        if (file_put_contents($data_file, json_encode($messages, JSON_PRETTY_PRINT))) {
-            $success = true;
-        } else {
-            $error = "Sorry, there was an error saving your message. Please try again.";
+        try {
+            // Get database connection
+            $pdo = getDatabaseConnection();
+            
+            // Insert forum message into database
+            $sql = "INSERT INTO forum_posts (author, email, website, subject, message, approved, ip_address) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+            
+            $stmt = $pdo->prepare($sql);
+            $result = $stmt->execute([
+                $author,
+                $email ?: null,
+                $website ?: null,
+                $subject,
+                $message,
+                !REQUIRE_FORUM_APPROVAL, // Auto-approve if REQUIRE_FORUM_APPROVAL is false
+                getClientIP()
+            ]);
+            
+            if ($result) {
+                $success = true;
+                $message_id = $pdo->lastInsertId();
+            } else {
+                $error = "Sorry, there was an error saving your message. Please try again.";
+            }
+        } catch (PDOException $e) {
+            error_log("Forum Database Error: " . $e->getMessage());
+            $error = "Sorry, we're experiencing technical difficulties. Please try again later.";
         }
     }
 }
@@ -61,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Forum Message Posted</title>
     <link rel="stylesheet" href="../css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <meta http-equiv="refresh" content="30;url=../forum.html">
+    <meta http-equiv="refresh" content="30;url=../forum.php">
 </head>
 <body>
     <div class="container">
@@ -111,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="center">
             <p><strong>You'll be redirected back to the forum in 30 seconds...</strong></p>
-            <p><a href="../forum.html">← Go back to Forum</a></p>
+            <p><a href="../forum.php">← Go back to Forum</a></p>
             <p><a href="../index.html">← Return to Homepage</a></p>
         </div>
 
