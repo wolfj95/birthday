@@ -58,7 +58,7 @@ try {
         </div>
 
         <div class="marquee">
-            <marquee><p><strong>💬 NEW MESSAGES WELCOME! 💬 SHARE YOUR THOUGHTS! 💬</strong></p></marquee>
+            <marquee><strong>💬 NEW MESSAGES WELCOME! 💬 SHARE YOUR THOUGHTS! 💬</strong></marquee>
         </div>
 
         <div class="form-section">
