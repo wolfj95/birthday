@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Party Details & RSVP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Birthday Party Details & RSVP 🎉</h1>
+            <p><a href="index.html">← Back to Homepage</a></p>
+        </div>
+
+        <div class="party-details">
+            <h2>Party Information</h2>
+            <table>
+                <tr>
+                    <th>What:</th>
+                    <td>My Epic 30th Birthday Bash!</td>
+                </tr>
+                <tr>
+                    <th>When:</th>
+                    <td>Saturday, March 15th, 2025 at 7:00 PM</td>
+                </tr>
+                <tr>
+                    <th>Where:</th>
+                    <td>123 Party Street, Celebration City, CA 90210</td>
+                </tr>
+                <tr>
+                    <th>Dress Code:</th>
+                    <td>Casual fun! (90s theme encouraged but not required)</td>
+                </tr>
+                <tr>
+                    <th>Age Range:</th>
+                    <td>All ages welcome!</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="marquee">
+            <p><strong>🎂 CAKE! 🍕 PIZZA! 🎵 MUSIC! 🎮 GAMES! 🎂</strong></p>
+        </div>
+
+        <div class="party-details">
+            <h2>What to Expect</h2>
+            <ul>
+                <li><strong>Food & Drinks:</strong> Pizza, snacks, birthday cake, and beverages</li>
+                <li><strong>Entertainment:</strong> Music, games, and good conversation</li>
+                <li><strong>Activities:</strong> 90s trivia, classic video games, and karaoke</li>
+                <li><strong>Parking:</strong> Street parking and nearby lot available</li>
+                <li><strong>Duration:</strong> 7 PM - 11 PM (or whenever the party ends!)</li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <h3>RSVP Form</h3>
+            <p><strong>Please fill out this form to let me know you're coming!</strong></p>
+            
+            <form action="php/rsvp.php" method="POST">
+                <table>
+                    <tr>
+                        <td><label for="name">Your Name:</label></td>
+                        <td><input type="text" id="name" name="name" required size="30"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email Address:</label></td>
+                        <td><input type="email" id="email" name="email" required size="30"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="phone">Phone Number (optional):</label></td>
+                        <td><input type="text" id="phone" name="phone" size="20"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="attending">Will you attend?</label></td>
+                        <td>
+                            <input type="radio" id="yes" name="attending" value="yes" required>
+                            <label for="yes">Yes, I'll be there!</label><br>
+                            <input type="radio" id="no" name="attending" value="no">
+                            <label for="no">Sorry, can't make it</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="guests">Number of Guests:</label></td>
+                        <td>
+                            <select id="guests" name="guests">
+                                <option value="0">Just me</option>
+                                <option value="1">+1 guest</option>
+                                <option value="2">+2 guests</option>
+                                <option value="3">+3 guests</option>
+                                <option value="4">+4 guests</option>
+                                <option value="5">+5 or more guests</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="dietary">Dietary Restrictions:</label></td>
+                        <td>
+                            <input type="checkbox" id="vegetarian" name="dietary[]" value="vegetarian">
+                            <label for="vegetarian">Vegetarian</label><br>
+                            <input type="checkbox" id="vegan" name="dietary[]" value="vegan">
+                            <label for="vegan">Vegan</label><br>
+                            <input type="checkbox" id="gluten-free" name="dietary[]" value="gluten-free">
+                            <label for="gluten-free">Gluten-Free</label><br>
+                            <input type="checkbox" id="allergies" name="dietary[]" value="allergies">
+                            <label for="allergies">Food Allergies</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="message">Special Message (Optional):</label></td>
+                        <td><textarea id="message" name="message" rows="4" cols="40" placeholder="Any special requests or birthday wishes?"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <input type="submit" value="Submit RSVP">
+                            <input type="reset" value="Clear Form">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div class="construction">
+            <p><strong>🚨 IMPORTANT REMINDERS 🚨</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li>Please RSVP by March 10th so I can plan food accordingly</li>
+                <li>If you have any questions, feel free to contact me directly</li>
+                <li>Bring your dancing shoes and your best 90s moves!</li>
+            </ul>
+        </div>
+
+        <div class="center">
+            <h3>Need Directions?</h3>
+            <p>The party is at 123 Party Street, Celebration City, CA 90210</p>
+            <p>It's the big house with the balloons out front!</p>
+            <p>Public transport: Take the #42 bus to Celebration Avenue</p>
+        </div>
+
+        <div class="footer">
+            <p><a href="index.html">Home</a> | <a href="gallery.html">Photo Gallery</a> | <a href="forum.html">Forum</a> | <a href="links.html">Cool Links</a></p>
+            <p>Questions? Email me at birthday@example.com</p>
+        </div>
+    </div>
+</body>
+</html>

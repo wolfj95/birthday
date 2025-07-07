@@ -1,0 +1,12 @@
+{
+  "name": "birthday-website",
+  "version": "1.0.0",
+  "description": "A 1995-style birthday invitation website",
+  "main": "index.html",
+  "scripts": {
+    "start": "php -S localhost:8000"
+  },
+  "keywords": ["birthday", "1995", "retro", "website"],
+  "author": "",
+  "license": "MIT"
+}

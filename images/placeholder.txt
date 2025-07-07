@@ -1,0 +1,11 @@
+This directory contains placeholder images for the website.
+
+For the links page screenshots mentioned in links.html, you can add:
+- arcade-screenshot.jpg (screenshot of Internet Archive Arcade)
+- radiooooo-screenshot.jpg (screenshot of Radiooooo)
+- zombo-screenshot.jpg (screenshot of Zombo.com)
+- camerons-world-screenshot.jpg (screenshot of Cameron's World)
+
+You can also add any other images you want to use for the website in this directory.
+
+The uploads/ subdirectory is where user-uploaded photos will be stored when they use the gallery submission form.

@@ -1,0 +1,235 @@
+/* 1995 Style Website CSS */
+
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 14px;
+    background-color: #c0c0c0;
+    margin: 0;
+    padding: 10px;
+    color: #000000;
+}
+
+h1 {
+    font-size: 24px;
+    color: #800080;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    color: #000080;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+h3 {
+    font-size: 16px;
+    color: #008000;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
+
+a {
+    color: #0000ff;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #800080;
+}
+
+a:hover {
+    color: #ff0000;
+}
+
+table {
+    border: 2px solid #000000;
+    border-collapse: collapse;
+    margin: 10px 0;
+    background-color: #ffffff;
+}
+
+td, th {
+    border: 1px solid #000000;
+    padding: 4px 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #c0c0c0;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    padding: 15px;
+}
+
+.header {
+    text-align: center;
+    background-color: #ffff00;
+    border: 2px solid #000000;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.nav-table {
+    width: 100%;
+    margin: 15px 0;
+}
+
+.nav-table td {
+    text-align: center;
+    background-color: #ffcccc;
+    font-weight: bold;
+}
+
+.countdown {
+    background-color: #ccffcc;
+    border: 2px solid #008000;
+    padding: 10px;
+    text-align: center;
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.form-section {
+    background-color: #f0f0f0;
+    border: 2px solid #000000;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    color: #800000;
+}
+
+input[type="text"], input[type="email"], textarea, select {
+    border: 2px inset #c0c0c0;
+    padding: 2px;
+    font-family: "Times New Roman", serif;
+    font-size: 12px;
+}
+
+input[type="submit"], input[type="button"] {
+    background-color: #c0c0c0;
+    border: 2px outset #c0c0c0;
+    padding: 4px 8px;
+    font-family: "Times New Roman", serif;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+input[type="submit"]:active, input[type="button"]:active {
+    border: 2px inset #c0c0c0;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.gallery img {
+    border: 2px solid #000000;
+    max-width: 150px;
+    height: auto;
+}
+
+.forum-post {
+    background-color: #ffffcc;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.forum-post .author {
+    font-weight: bold;
+    color: #800000;
+}
+
+.forum-post .date {
+    font-size: 10px;
+    color: #666666;
+}
+
+.link-section {
+    background-color: #ccccff;
+    border: 2px solid #000080;
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.link-section h3 {
+    margin-top: 0;
+    color: #000080;
+}
+
+.screenshot {
+    border: 2px solid #000000;
+    max-width: 200px;
+    height: auto;
+    margin: 5px 0;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 10px;
+    color: #666666;
+}
+
+/* 1995 style marquee text */
+.marquee {
+    background-color: #ffff00;
+    border: 2px solid #000000;
+    padding: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.blink {
+    animation: blink 4s linear infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.center {
+    text-align: center;
+}
+
+.construction {
+    background-color: #ffff00;
+    border: 2px solid #ff0000;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.welcome-message {
+    background-color: #ffccff;
+    border: 2px solid #800080;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.party-details {
+    background-color: #ccffff;
+    border: 2px solid #008080;
+    padding: 15px;
+    margin: 15px 0;
+}

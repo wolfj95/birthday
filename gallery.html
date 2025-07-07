@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1995 Photo Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📸 1995 Photo Gallery 📸</h1>
+            <p><em>A journey back to the year I was born!</em></p>
+            <p><a href="index.html">← Back to Homepage</a></p>
+        </div>
+
+        <div class="welcome-message">
+            <h2>Welcome to 1995!</h2>
+            <p>Take a trip back in time to 1995 - the year I entered this world! These photos capture the essence of that amazing year when the World Wide Web was just getting started, Windows 95 was released, and the world was full of possibilities.</p>
+            <p class="blink">Loading photos from the Information Superhighway...</p>
+        </div>
+
+        <div class="construction">
+            <p><strong>📷 PHOTO GALLERY STATUS 📷</strong></p>
+            <p>Photos are being loaded from Flickr! If you don't see images, make sure JavaScript is enabled in your browser.</p>
+        </div>
+
+        <div class="party-details">
+            <h2>What Was Happening in 1995?</h2>
+            <ul>
+                <li><strong>Technology:</strong> Windows 95 launched, Internet Explorer 1.0 released</li>
+                <li><strong>Movies:</strong> Toy Story, Batman Forever, Apollo 13, Braveheart</li>
+                <li><strong>Music:</strong> Alanis Morissette, Boyz II Men, TLC, Coolio</li>
+                <li><strong>Sports:</strong> Dallas Cowboys won Super Bowl, Atlanta Braves won World Series</li>
+                <li><strong>Fashion:</strong> Grunge was still cool, platform shoes, chokers</li>
+                <li><strong>TV Shows:</strong> Friends, ER, The X-Files, Seinfeld</li>
+            </ul>
+        </div>
+
+        <div class="gallery" id="photo-gallery">
+            <h3>📸 Photos from 1995 📸</h3>
+            <div id="loading-message">
+                <p><strong>Loading awesome 1995 photos...</strong></p>
+                <p>Please wait while we fetch images from Flickr!</p>
+            </div>
+            
+            <!-- Placeholder images will be loaded here by JavaScript -->
+            <div class="gallery-grid" id="gallery-grid" style="display: none;">
+                <!-- Photos will be dynamically loaded here -->
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Share Your Own 1995 Memories!</h3>
+            <p>Do you have any photos or memories from 1995? Share them with us!</p>
+            <form action="php/gallery.php" method="POST" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td><label for="photo-title">Photo Title:</label></td>
+                        <td><input type="text" id="photo-title" name="photo_title" size="30"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="photo-description">Description:</label></td>
+                        <td><textarea id="photo-description" name="photo_description" rows="3" cols="40"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="photo-file">Upload Photo:</label></td>
+                        <td><input type="file" id="photo-file" name="photo_file" accept="image/*"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="your-name">Your Name:</label></td>
+                        <td><input type="text" id="your-name" name="your_name" size="30"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <input type="submit" value="Share Photo">
+                            <input type="reset" value="Clear Form">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div class="link-section">
+            <h3>More 1995 Resources</h3>
+            <ul>
+                <li><a href="https://en.wikipedia.org/wiki/1995" target="_blank">Wikipedia: 1995</a></li>
+                <li><a href="https://www.thepeoplehistory.com/1995.html" target="_blank">What Happened in 1995</a></li>
+                <li><a href="https://www.infoplease.com/year/1995" target="_blank">1995 Year in Review</a></li>
+                <li><a href="https://www.songfacts.com/category/songs-from-1995" target="_blank">Popular Songs from 1995</a></li>
+            </ul>
+        </div>
+
+        <div class="center">
+            <h3>Fun Facts About 1995</h3>
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <th>Fun Fact</th>
+                </tr>
+                <tr>
+                    <td>Technology</td>
+                    <td>The first banner ad appeared on the web!</td>
+                </tr>
+                <tr>
+                    <td>Internet</td>
+                    <td>There were only about 18,000 websites total</td>
+                </tr>
+                <tr>
+                    <td>Movies</td>
+                    <td>Toy Story was the first fully computer-animated film</td>
+                </tr>
+                <tr>
+                    <td>Music</td>
+                    <td>CD sales peaked, vinyl was "dead"</td>
+                </tr>
+                <tr>
+                    <td>Cost of Living</td>
+                    <td>Gas was about $1.15 per gallon</td>
+                </tr>
+                <tr>
+                    <td>Communication</td>
+                    <td>Most people still used pagers instead of cell phones</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p><a href="index.html">Home</a> | <a href="party.html">Party & RSVP</a> | <a href="forum.html">Forum</a> | <a href="links.html">Cool Links</a></p>
+            <p>Photo gallery powered by Flickr API and 90s nostalgia</p>
+        </div>
+    </div>
+
+    <script src="js/gallery.js"></script>
+</body>
+</html>
