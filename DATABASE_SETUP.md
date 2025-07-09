@@ -18,8 +18,8 @@ source database/schema.sql
 
 Or manually:
 ```sql
-CREATE DATABASE birthday_website;
-USE birthday_website;
+CREATE DATABASE ;
+USE ;
 -- Then copy and paste the contents of database/schema.sql
 ```
 
@@ -28,7 +28,7 @@ Edit `php/config.php` and update the database credentials:
 
 ```php
 define('DB_HOST', 'localhost');     // Your MySQL host
-define('DB_NAME', 'birthday_website'); // Database name
+define('DB_NAME', ''); // Database name
 define('DB_USER', 'your_username'); // Your MySQL username
 define('DB_PASS', 'your_password'); // Your MySQL password
 ```

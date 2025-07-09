@@ -1,8 +1,11 @@
 -- Birthday Website Database Schema
 -- Run this SQL script to create the necessary tables
 
-CREATE DATABASE IF NOT EXISTS birthday_website;
-USE birthday_website;
+-- CREATE DATABASE IF NOT EXISTS birthday_website;
+-- USE birthday_website;
+
+CREATE DATABASE IF NOT EXISTS wolfiede_birthday;
+USE wolfiede_birthday;
 
 -- RSVP Table
 CREATE TABLE IF NOT EXISTS rsvps (
