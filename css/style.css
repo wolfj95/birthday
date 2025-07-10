@@ -1,5 +1,29 @@
 /* 1995 Style Website CSS */
 
+.welcome-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.welcome-text {
+    flex: 1;
+}
+
+.audio-player {
+    flex: 0 0 300px;
+    text-align: center;
+    border: 2px solid #000000;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+.audio-image {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
 body {
     font-family: "Times New Roman", serif;
     font-size: 14px;

@@ -6,7 +6,15 @@
   "scripts": {
     "start": "php -S localhost:8000"
   },
-  "keywords": ["birthday", "1995", "retro", "website"],
+  "keywords": [
+    "birthday",
+    "1995",
+    "retro",
+    "website"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "claude": "^0.1.1"
+  }
 }
