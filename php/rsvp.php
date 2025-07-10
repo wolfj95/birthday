@@ -122,8 +122,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="center">
             <p><strong>You'll be redirected back to the party page in 30 seconds...</strong></p>
-            <p><a href="../party.html">← Go back to Party Details</a></p>
-            <p><a href="../index.html">← Return to Homepage</a></p>
+            <p><a href="../party.html">&larr; Go back to Party Details</a></p>
+            <p><a href="../index.html">&larr; Return to Homepage</a></p>
         </div>
 
         <div class="footer">

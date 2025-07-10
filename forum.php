@@ -48,7 +48,7 @@ try {
         <div class="header">
             <h1><img src="images/chat.gif" alt="Chat" width="30" height="30"> Birthday Message Forum <img src="images/chat.gif" alt="Chat" width="30" height="30"></h1>
             <p><em>Share your birthday wishes and memories!</em></p>
-            <p><a href="index.html">← Back to Homepage</a></p>
+            <p><a href="index.html">&larr; Back to Homepage</a></p>
         </div>
 
         <div class="welcome-message">
