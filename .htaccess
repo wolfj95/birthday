@@ -62,7 +62,7 @@ ErrorDocument 500 /500.html
 <IfModule mod_php7.c>
     php_value display_errors Off
     php_value log_errors On
-    php_value error_log /home/youraccount/public_html/error_log
+    php_value error_log /home/wolfiede/public_html/error_log
     php_value max_execution_time 30
     php_value max_input_time 30
     php_value memory_limit 128M
