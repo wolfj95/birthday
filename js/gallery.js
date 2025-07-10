@@ -45,7 +45,7 @@ var samplePhotos = [
     }
 ];
 
-// 90s style photo loading function
+// 90s style photo loading function with local 1995 photos
 function loadPhotos() {
     var galleryGrid = document.getElementById("gallery-grid");
     var loadingMessage = document.getElementById("loading-message");
@@ -57,16 +57,63 @@ function loadPhotos() {
     // Show loading message
     loadingMessage.style.display = "block";
     
+    // Fetch 1995 photos from JSON file
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'js/1995-photos.json', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.photos && response.photos.length > 0) {
+                        // Randomly select 20 photos from the collection
+                        var randomPhotos = getRandomPhotos(response.photos, 20);
+                        displayPhotos(randomPhotos);
+                    } else {
+                        // Fallback to sample photos
+                        displayPhotos(samplePhotos);
+                    }
+                } catch (e) {
+                    // Fallback to sample photos
+                    displayPhotos(samplePhotos);
+                }
+            } else {
+                // Fallback to sample photos
+                displayPhotos(samplePhotos);
+            }
+        }
+    };
+    xhr.send();
+}
+
+// Get random photos from array
+function getRandomPhotos(photos, count) {
+    var shuffled = photos.slice();
+    for (var i = shuffled.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = shuffled[i];
+        shuffled[i] = shuffled[j];
+        shuffled[j] = temp;
+    }
+    return shuffled.slice(0, count);
+}
+
+// Display photos with 90s-style progressive loading
+function displayPhotos(photos) {
+    var galleryGrid = document.getElementById("gallery-grid");
+    var loadingMessage = document.getElementById("loading-message");
+    
     // Simulate 90s-style slow loading
     setTimeout(function() {
         loadingMessage.style.display = "none";
         galleryGrid.style.display = "block";
         
         // Add photos one by one (90s style progressive loading)
-        for (var i = 0; i < samplePhotos.length; i++) {
+        var photosToShow = Math.min(photos.length, 20);
+        for (var i = 0; i < photosToShow; i++) {
             (function(index) {
                 setTimeout(function() {
-                    addPhotoToGallery(samplePhotos[index]);
+                    addPhotoToGallery(photos[index]);
                 }, index * 500); // 500ms delay between each photo
             })(i);
         }
@@ -80,23 +127,23 @@ function addPhotoToGallery(photo) {
     // Create photo container
     var photoContainer = document.createElement("div");
     photoContainer.className = "photo-container";
-    photoContainer.style.cssText = "margin: 10px; display: inline-block; border: 2px solid #000; background: #fff; padding: 5px;";
+    photoContainer.style.cssText = "margin: 10px; display: inline-block; border: 2px solid #000; background: #fff; padding: 5px; width: 160px;";
     
     // Create image element
     var img = document.createElement("img");
     img.src = photo.url;
     img.alt = photo.title;
-    img.style.cssText = "width: 150px; height: 112px; display: block;";
+    img.style.cssText = "width: 150px; height: auto; display: block;";
     
     // Create title
     var title = document.createElement("div");
     title.innerHTML = "<strong>" + photo.title + "</strong>";
-    title.style.cssText = "font-size: 12px; text-align: center; margin-top: 5px;";
+    title.style.cssText = "font-size: 12px; text-align: center; margin-top: 5px; width: 150px; word-wrap: break-word;";
     
     // Create description
     var description = document.createElement("div");
     description.innerHTML = photo.description;
-    description.style.cssText = "font-size: 10px; text-align: center; margin-top: 2px; color: #666;";
+    description.style.cssText = "font-size: 10px; text-align: center; margin-top: 2px; color: #666; width: 150px; word-wrap: break-word;";
     
     // Add click event (90s style popup)
     img.onclick = function() {
@@ -138,23 +185,6 @@ function showPhotoPopup(photo) {
     popup.document.close();
 }
 
-// Alternative Flickr API integration (commented out for now)
-/*
-function loadFlickrPhotos() {
-    // This would integrate with Flickr API to load 1995 photos
-    // For now, we use placeholder images
-    var flickrUrl = "https://api.flickr.com/services/rest/";
-    var apiKey = "YOUR_FLICKR_API_KEY"; // You would need to get this
-    var searchTerm = "1995 vintage retro";
-    
-    // Example API call (requires API key)
-    var requestUrl = flickrUrl + "?method=flickr.photos.search&api_key=" + apiKey + 
-                    "&tags=" + searchTerm + "&format=json&nojsoncallback=1";
-    
-    // This would use XMLHttpRequest in real implementation
-    console.log("Flickr API integration would go here");
-}
-*/
 
 // Initialize gallery when page loads
 function initGallery() {
