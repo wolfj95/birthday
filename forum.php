@@ -46,7 +46,7 @@ try {
 <body>
     <div class="container">
         <div class="header">
-            <h1>💬 Birthday Message Forum 💬</h1>
+            <h1><img src="images/chat.gif" alt="Chat" width="30" height="30"> Birthday Message Forum <img src="images/chat.gif" alt="Chat" width="30" height="30"></h1>
             <p><em>Share your birthday wishes and memories!</em></p>
             <p><a href="index.html">← Back to Homepage</a></p>
         </div>
@@ -54,15 +54,15 @@ try {
         <div class="welcome-message">
             <h2>Welcome to My Birthday Forum!</h2>
             <p>This is where you can leave me birthday messages, share memories, or just chat with other visitors to my site! Think of it as a digital guestbook for the Information Age.</p>
-            <p>Please be nice and keep it fun - this is a celebration after all! 🎉</p>
+            <p>Please be nice and keep it fun - this is a celebration after all! <img src="images/party.gif" alt="Party" width="16" height="16"></p>
         </div>
 
         <div class="marquee">
-            <marquee><strong>💬 NEW MESSAGES WELCOME! 💬 SHARE YOUR THOUGHTS! 💬</strong></marquee>
+            <marquee><strong><img src="images/chat.gif" alt="Chat" width="16" height="16"> NEW MESSAGES WELCOME! <img src="images/chat.gif" alt="Chat" width="16" height="16"> SHARE YOUR THOUGHTS! <img src="images/chat.gif" alt="Chat" width="16" height="16"></strong></marquee>
         </div>
 
         <div class="form-section">
-            <h3>📝 Post a New Message</h3>
+            <h3><img src="images/pencil.gif" alt="Pencil" width="20" height="20"> Post a New Message</h3>
             <form action="php/forum.php" method="POST">
                 <table>
                     <tr>
@@ -96,7 +96,7 @@ try {
         </div>
 
         <div class="construction">
-            <p><strong>📋 FORUM RULES 📋</strong></p>
+            <p><strong><img src="images/rules.gif" alt="Rules" width="40" height="40"> FORUM RULES <img src="images/rules.gif" alt="Rules" width="40" height="40"></strong></p>
             <ul style="text-align: left; display: inline-block;">
                 <li>Keep messages friendly and appropriate</li>
                 <li>No spam or advertising</li>
@@ -111,13 +111,13 @@ try {
         </div>
 
         <div class="party-details">
-            <h2>📨 Recent Messages</h2>
+            <h2><img src="images/message.gif" alt="Message" width="40" height="40"> Recent Messages</h2>
             <p><em>Messages from visitors like you!</em></p>
             
             <?php if (!empty($recentPosts)): ?>
                 <?php foreach ($recentPosts as $post): ?>
                     <div class="forum-post">
-                        <div class="author">💬 <?php echo htmlspecialchars($post['author']); ?></div>
+                        <div class="author"><img src="images/chat.gif" alt="Chat" width="12" height="12"> <?php echo htmlspecialchars($post['author']); ?></div>
                         <div class="date"><?php echo date('F j, Y - g:i A', strtotime($post['created_at'])); ?></div>
                         <div class="subject"><strong><?php echo htmlspecialchars($post['subject']); ?></strong></div>
                         <div class="content">
@@ -132,7 +132,7 @@ try {
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="forum-post">
-                    <div class="author">🎂 WebMaster</div>
+                    <div class="author"><img src="images/cake.gif" alt="Cake" width="12" height="12"> WebMaster</div>
                     <div class="date">July 8, 2025 - 12:00 PM</div>
                     <div class="subject"><strong>Welcome to the Forum!</strong></div>
                     <div class="content">
@@ -142,7 +142,7 @@ try {
                 </div>
                 
                 <div class="construction">
-                    <p><strong>🔍 NO MESSAGES YET 🔍</strong></p>
+                    <p><strong><img src="images/construction.gif" alt="Construction" width="16" height="16"> NO MESSAGES YET <img src="images/construction.gif" alt="Construction" width="16" height="16"></strong></p>
                     <p>Be the first to post a message! Share your birthday wishes or memories from 1995.</p>
                 </div>
             <?php endif; ?>
@@ -171,7 +171,7 @@ try {
         </div>
 
         <div class="center">
-            <h3>💡 Message Ideas</h3>
+            <h3><img src="images/ideas.gif" alt="ideas" width="20" height="40"> Message Ideas</h3>
             <p>Not sure what to write? Here are some suggestions:</p>
             <ul style="text-align: left; display: inline-block;">
                 <li>Share your favorite memory from 1995</li>
