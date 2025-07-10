@@ -17,7 +17,7 @@ try {
             FROM forum_posts 
             WHERE approved = 1 
             ORDER BY created_at DESC 
-            LIMIT 10";
+            LIMIT 100";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute();

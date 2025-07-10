@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎉 RSVP Status 🎉</h1>
+            <h1><img src="../images/party.gif" alt="Party" width="25" height="25"> RSVP Status <img src="../images/party.gif" alt="Party" width="25" height="25"></h1>
         </div>
 
         <?php if (isset($success) && $success): ?>
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Thanks for responding, <?php echo htmlspecialchars($name); ?>!</p>
                 
                 <?php if ($attending === 'yes'): ?>
-                    <p>🎉 <strong>We're excited to see you at the party!</strong></p>
+                    <p><img src="../images/party-hat.gif" alt="Party" width="20" height="20"> <strong>We're excited to see you at the party!</strong></p>
                     <?php if ($guests > 0): ?>
                         <p>We've noted that you're bringing <?php echo $guests; ?> guest(s).</p>
                     <?php endif; ?>
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p>We've noted your dietary preferences: <?php echo implode(', ', array_map('htmlspecialchars', $dietary)); ?></p>
                     <?php endif; ?>
                 <?php else: ?>
-                    <p>😢 <strong>Sorry you can't make it!</strong> We'll miss you!</p>
+                    <p>:,( <strong>Sorry you can't make it!</strong> We'll miss you!</p>
                 <?php endif; ?>
                 
                 <?php if (!empty($message)): ?>

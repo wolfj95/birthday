@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <div class="header">
-            <h1>💬 Forum Message Status 💬</h1>
+            <h1><img src="../images/message.gif" alt="Message" width="25" height="25"> Forum Message Status <img src="../images/message.gif" alt="Message" width="25" height="25"></h1>
         </div>
 
         <?php if (isset($success) && $success): ?>
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="party-details">
                 <h3>Your Message Preview:</h3>
                 <div class="forum-post">
-                    <div class="author">📝 <?php echo htmlspecialchars($author); ?></div>
+                    <div class="author"><?php echo htmlspecialchars($author); ?></div>
                     <div class="date"><?php echo date('F j, Y - g:i A'); ?></div>
                     <div class="subject"><strong><?php echo htmlspecialchars($subject); ?></strong></div>
                     <div class="content">
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="marquee">
-            <p><strong>💬 THANKS FOR POSTING! 💬 COME BACK SOON! 💬</strong></p>
+            <marquee><strong><img src="../images/chat.gif" alt="Chat" width="25" height="25"> THANKS FOR POSTING! COME BACK SOON! <img src="../images/chat.gif" alt="Chat" width="25" height="25"></strong></marquee>
         </div>
 
         <div class="center">
