@@ -38,7 +38,7 @@
             <h2>Details</h2>
             <ul>
                 <li><strong>Accomodations:</strong> <a href="https://www.airbnb.com/rooms/43046541?source_impression_id=p3_1752186723_P3CWFpcvnOfuSEjq">The Airbnb I rented</a> has 9 bedrooms and 6.5 bathrooms, so we should have plenty of space (though you may need to share a bed with a friend if you are comfortable).</li>
-                <li><strong>Getting There:</strong> The Airbnb is on Martha's Vineyard and requires a ferry ride from the mainland. I will help to coordinate carpools once I have a sense of who is coming. <strong>If you need a ride, please plan to be in the Boston area no later than Friday, Nov 7 at 10.</strong></li>
+                <li><strong>Getting There:</strong> The Airbnb is on Martha's Vineyard and requires a ferry ride from the mainland. I will help to coordinate carpools once I have a sense of who is coming. <strong>If you need a ride, please plan to be in the Boston area no later than Friday, Nov 7 at 10am.</strong></li>
                 <li><strong>Food & Drinks:</strong> I'll stock the house with groceries for all meals and we'll cook together! Please bring your own drinks. :)</li>
                 <li><strong>Activities:</strong> I'll plan one birthday-y activity on Saturday evening (details tbd), but otherwise we'll just hang out and explore the island. Bring games, movies, books, etc.!</li>
                 <li><strong>Duration:</strong> Check in is at 4pm on Friday and check out is at 10am on Sunday. You're welcome to stay the entire time (or just part of the time).</li>
@@ -79,10 +79,28 @@
                             <select id="guests" name="guests">
                                 <option value="0">Just me</option>
                                 <option value="1">+1 guest</option>
-                                <option value="2">+2 guests</option>
-                                <option value="3">+3 guests</option>
-                                <option value="4">+4 guests</option>
-                                <option value="5">+5 or more guests</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="nights">Which nights will you stay?</label></td>
+                        <td>
+                            <input type="checkbox" id="friday" name="nights[]" value="friday">
+                            <label for="friday">Friday Night (Nov 7-8)</label><br>
+                            <input type="checkbox" id="saturday" name="nights[]" value="saturday">
+                            <label for="saturday">Saturday Night (Nov 8-9)</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="transportation">Transportation from Boston:</label></td>
+                        <td>
+                            <select id="transportation" name="transportation">
+                                <option value="">Select an option...</option>
+                                <option value="has_car">I have a car and can drive myself</option>
+                                <option value="can_drive_others">I have a car and can give others rides</option>
+                                <option value="need_ride">I need a ride from someone else</option>
+                                <option value="other_transport">I have my own transportation plan</option>
+                                <option value="not_sure">Not sure yet</option>
                             </select>
                         </td>
                     </tr>
@@ -96,7 +114,7 @@
                             <input type="checkbox" id="gluten-free" name="dietary[]" value="gluten-free">
                             <label for="gluten-free">Gluten-Free</label><br>
                             <input type="checkbox" id="allergies" name="dietary[]" value="allergies">
-                            <label for="allergies">Food Allergies</label>
+                            <label for="allergies">Food Allergies (Elaborate Below)</label>
                         </td>
                     </tr>
                     <tr>

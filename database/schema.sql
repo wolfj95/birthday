@@ -4,8 +4,8 @@
 -- CREATE DATABASE IF NOT EXISTS birthday_website;
 -- USE birthday_website;
 
-CREATE DATABASE IF NOT EXISTS wolfiede_birthday;
-USE wolfiede_birthday;
+CREATE DATABASE IF NOT EXISTS wolfiede_birthday_db;
+USE wolfiede_birthday_db;
 
 -- RSVP Table
 CREATE TABLE IF NOT EXISTS rsvps (
@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS rsvps (
     phone VARCHAR(20),
     attending ENUM('yes', 'no') NOT NULL,
     guests INT DEFAULT 0,
+    nights ENUM('friday', 'saturday', 'both', 'none'),
+    transportation ENUM('has_car', 'can_drive_others', 'need_ride', 'other_transport', 'not_sure'),
     dietary TEXT,
     message TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

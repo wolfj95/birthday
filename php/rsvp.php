@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = sanitizeInput($_POST['phone'] ?? '');
     $attending = sanitizeInput($_POST['attending'] ?? '');
     $guests = intval($_POST['guests'] ?? 0);
+    $nights = isset($_POST['nights']) ? $_POST['nights'] : [];
+    $transportation = sanitizeInput($_POST['transportation'] ?? '');
     $dietary = isset($_POST['dietary']) ? $_POST['dietary'] : [];
     $message = sanitizeInput($_POST['message'] ?? '');
     
@@ -34,12 +36,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($checkStmt->rowCount() > 0) {
                 $error = "An RSVP with this email address already exists. Please contact us if you need to update your RSVP.";
             } else {
+                // Process nights checkboxes into ENUM value
+                $nightsEnum = 'none';
+                if (!empty($nights)) {
+                    $hasFriday = in_array('friday', $nights);
+                    $hasSaturday = in_array('saturday', $nights);
+                    
+                    if ($hasFriday && $hasSaturday) {
+                        $nightsEnum = 'both';
+                    } elseif ($hasFriday) {
+                        $nightsEnum = 'friday';
+                    } elseif ($hasSaturday) {
+                        $nightsEnum = 'saturday';
+                    }
+                }
+                
                 // Convert dietary array to JSON string
                 $dietaryJson = !empty($dietary) ? json_encode($dietary) : null;
                 
                 // Insert RSVP into database
-                $sql = "INSERT INTO rsvps (name, email, phone, attending, guests, dietary, message, ip_address) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO rsvps (name, email, phone, attending, guests, nights, transportation, dietary, message, ip_address) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 
                 $stmt = $pdo->prepare($sql);
                 $result = $stmt->execute([
@@ -48,6 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $phone,
                     $attending,
                     $guests,
+                    $nightsEnum,
+                    $transportation,
                     $dietaryJson,
                     $message,
                     getClientIP()
@@ -91,6 +110,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p><img src="../images/party-hat.gif" alt="Party" width="20" height="20"> <strong>We're excited to see you at the party!</strong></p>
                     <?php if ($guests > 0): ?>
                         <p>We've noted that you're bringing <?php echo $guests; ?> guest(s).</p>
+                    <?php endif; ?>
+                    <?php if (!empty($nights)): ?>
+                        <p>We've noted that you'll be staying: <?php echo implode(', ', array_map('htmlspecialchars', $nights)); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($transportation)): ?>
+                        <p>Transportation: <?php echo htmlspecialchars(str_replace('_', ' ', $transportation)); ?></p>
                     <?php endif; ?>
                     <?php if (!empty($dietary)): ?>
                         <p>We've noted your dietary preferences: <?php echo implode(', ', array_map('htmlspecialchars', $dietary)); ?></p>
