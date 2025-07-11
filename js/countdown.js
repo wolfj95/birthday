@@ -77,7 +77,7 @@ if (document.readyState === "loading") {
 function add90sEffects() {
     // Change title periodically (like old websites used to do)
     var originalTitle = document.title;
-    var flashingTitle = "🎉 " + originalTitle + " 🎉";
+    var flashingTitle = "<3 " + originalTitle + " <3";
     var titleFlash = false;
     
     setInterval(function() {
