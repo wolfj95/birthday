@@ -3,6 +3,7 @@
 
 ### Data ###
 /data/*.json
+/audio/*.mp3
 
 ### Secrets ###
 .env

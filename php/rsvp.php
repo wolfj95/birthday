@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="party-details">
             <p><strong>What happens next?</strong></p>
             <ul>
-                <li>You'll receive a confirmation email shortly</li>
+                <li>You'll receive a confirmation email eventually (but maybe don't hold your breath)</li>
                 <li>Check back here for party updates</li>
                 <li>Feel free to post on the forum if you have questions</li>
             </ul>
