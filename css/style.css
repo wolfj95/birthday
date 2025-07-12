@@ -21,6 +21,7 @@
     align-items: center;
     justify-content: center;
     min-height: 200px;
+    /* min-width: 500px; */
 }
 
 .audio-image {
