@@ -183,17 +183,16 @@ try {
         </div>
 
         <div class="footer">
-            <p><a href="index.html">Home</a> | <a href="party.html">Party & RSVP</a> | <a href="gallery.html">Photo Gallery</a> | <a href="links.html">Cool Links</a></p>
+            <p><a href="index.html">Home</a> | <a href="party.html">Party & RSVP</a> | <a href="gallery.html">Gallery</a> | <a href="forum.php">Forum</a> | <a href="links.html">Cool Links</a></p>
             <p>Forum powered by PHP and good vibes since 2025</p>
             <div class="footer-badges">
-                <a href="https://www.netscape.com" target="_blank"><img src="images/netscape-now.gif" alt="Netscape Now!" width="80" height="15"></a>
-                <a href="https://www.microsoft.com/ie" target="_blank"><img src="images/ie-compatible.gif" alt="Internet Explorer Compatible" width="80" height="15"></a>
-                <a href="https://www.yahoo.com" target="_blank"><img src="images/yahoo.gif" alt="Yahoo!" width="80" height="15"></a>
-                <a href="https://www.altavista.com" target="_blank"><img src="images/altavista.gif" alt="AltaVista" width="80" height="15"></a>
-                <a href="https://www.geocities.com" target="_blank"><img src="images/geocities.gif" alt="GeoCities" width="80" height="15"></a>
-                <a href="https://www.hotmail.com" target="_blank"><img src="images/hotmail.gif" alt="Hotmail" width="80" height="15"></a>
+                <a href="https://www.netscape.com" target="_blank"><img src="images/netscape-now.gif" alt="Best viewed with any browser" width="88" height="31"></a>
+                <a href="https://www.apple.com" target="_blank"><img src="images/made-on-mac.gif" alt="Made on Mac" width="88" height="31"></a>
+                <a href="https://www.angelfire.com" target="_blank"><img src="images/yahoo.gif" alt="Angelfire" width="88" height="31"></a>
+                <a href="https://www.altavista.com" target="_blank"><img src="images/altavista.gif" alt="AltaVista" width="88" height="31"></a>
+                <a href="https://www.bravenet.com" target="_blank"><img src="images/geocities.gif" alt="BraveNet" width="88" height="31"></a>
+                <a href="https://www.aol.com" target="_blank"><img src="images/hotmail.gif" alt="AOL" width="88" height="31"></a>
             </div>
-            <p>Best viewed in Netscape Navigator 2.0 or Internet Explorer 3.0</p>
             <p>© 2025 Jacob Wolf | All rights reserved</p>
         </div>
     </div>
