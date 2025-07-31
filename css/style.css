@@ -10,6 +10,25 @@
     flex: 1;
 }
 
+.footer-badges {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.footer-badges img {
+    margin: 2px 3px;
+    border: 1px solid #000000;
+    vertical-align: middle;
+}
+
+.footer-badges a {
+    text-decoration: none;
+}
+
+.footer-badges a:hover img {
+    border-color: #0000ff;
+}
+
 .audio-player {
     flex: 0 0 300px;
     text-align: center;
